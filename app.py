@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 
-model=pickle.load(open(r"Desktop\Credit Card\vc.pkl","rb"))
+model=pickle.load(open(r"vc.pkl","rb"))
 
 # create Streamlit app
 st.title("Credit Card Fraud Detection Model")
