@@ -1,8 +1,8 @@
 import streamlit as st
-import joblib
+import pickle
 import numpy as np
 
-model=joblib.load(open("C:/Users/LENOVO/Downloads/Python project/Credit Card Fraud Detection/vc.pickle","rb"))
+model=pickle.load(open("C:/Users/LENOVO/Downloads/Python project/Credit Card Fraud Detection/vc.pickle","rb"))
 
 # create Streamlit app
 st.title("Credit Card Fraud Detection Model")
