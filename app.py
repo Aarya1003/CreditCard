@@ -1,12 +1,23 @@
-import streamlit as st
 import pickle
+
+import streamlit as st
 import numpy as np
 
-model=pickle.load(open("vc.pickle","rb"))
+model=pickle.load(open("vc.pickle", "rb"))
 
 # create Streamlit app
 st.title("Credit Card Fraud Detection Model")
 st.write("Enter the following features to check if the transaction is legitimate or fraudulent:")
+
+col1,col2=st.columns(2)
+
+#time
+with col1:
+  inp_t=st.number_input('Enter Time taken',key='col1')
+
+#Amount
+with col2:
+  inp_a=st.number_input('Enter Amount credited',key='col2')
 
 # create input fields for user to enter feature values
 input_df = st.text_input('Input All features')
@@ -17,6 +28,7 @@ submit = st.button("Submit")
 if submit:
     # get input feature values
     features = np.array(input_df_lst, dtype=np.float64)
+    features=np.hstack([inp_t,features,inp_a])
     # make prediction
     prediction = model.predict(features.reshape(1,-1))
     # display result
